@@ -1,6 +1,11 @@
 import {create} from 'zustand';
 import { IUsuario } from '../type/IUsuario'
 
+type Pagina ={
+  paginaatualizada: boolean;
+  atualizar : () => void;
+  naoatualizar: () => void;
+}
 
 type MenuStore ={
   MenuAberto: boolean;
@@ -27,5 +32,14 @@ export const useMenuStore = create<MenuStore>((set) => {
     abrirMenu: () => set({MenuAberto : true}),
     fecharMenu: () => set({MenuAberto : false}),
     toogleMenu: () => set((state) => ({MenuAberto: !state.MenuAberto})),
+  }  
+});
+
+export const useAtualizarPagina = create<Pagina>((set) => {
+  return{
+    paginaatualizada: false,
+    atualizar: () => set({paginaatualizada: true}),
+    naoatualizar: () => set({paginaatualizada: false})
+
   }  
 });
