@@ -31,8 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startexpress": "nodemon api/server.js start",
-    "build": "webpack --mode development",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
