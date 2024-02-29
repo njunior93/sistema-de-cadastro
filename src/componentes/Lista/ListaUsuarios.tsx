@@ -8,12 +8,13 @@ import { IUsuario } from '../../type/IUsuario';
 import { WindowSharp } from '@mui/icons-material';
 
 const ListaUsuarios = () =>{ 
+  const URLAPI = process.envi.URLAPI
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
 
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch('https://api-njunior93.vercel.app/lista')
+    fetch(`${URLAPI}lista`)
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
