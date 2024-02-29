@@ -12,11 +12,13 @@ interface Props{
 
 const Usuario = ({usuario}:Props) =>{
 
+  const URLAPI = process.env.URLAPI;
+
   function excluiUsuario(usuario: IUsuario){
 
     if(window.confirm(`Deseja excluir o usuario${usuario.nome}`)){
 
-      fetch(`https://api-njunior93.vercel.app/lista/${usuario.id}`,{
+      fetch(`${URLAPI}lista/${usuario.id}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
