@@ -12,13 +12,13 @@ interface Props{
 
 const Usuario = ({usuario}:Props) =>{
 
-  const URLAPI = process.env.URLAPI;
+  const LISTA = process.env.APILISTA;
 
   function excluiUsuario(usuario: IUsuario){
 
     if(window.confirm(`Deseja excluir o usuario${usuario.nome}`)){
 
-      fetch(`${URLAPI}lista/${usuario.id}`,{
+      fetch(`${LISTA}${usuario.id}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
