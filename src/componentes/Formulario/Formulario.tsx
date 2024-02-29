@@ -9,9 +9,6 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const Formulario = () =>{
-
-  const URLAPI = process.env.URLAPI
-
   const esquema = yup.object({
     nome: yup
       .string()
