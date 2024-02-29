@@ -8,13 +8,12 @@ import { IUsuario } from '../../type/IUsuario';
 import { WindowSharp } from '@mui/icons-material';
 
 const ListaUsuarios = () =>{ 
-  const LISTA = process.env.APILISTA;
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
 
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch(`${LISTA}`)
+    fetch(`https://api-orpin-psi-22.vercel.app/lista`)
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
