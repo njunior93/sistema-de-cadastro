@@ -38,7 +38,7 @@ const Formulario = () =>{
       onSubmit={(valores) => 
         { 
           const cadastro = {id: uuidv4(), nome: valores.nome, email: valores.email, data: valores.data, sexo: valores.sexo}
-          fetch(`${URLAPI}cadastrar`,
+          fetch('https://api-orpin-psi-22.vercel.app/cadastrar',
           {
             method: 'POST',
             headers: {
