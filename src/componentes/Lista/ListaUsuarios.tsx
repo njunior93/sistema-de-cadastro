@@ -28,7 +28,7 @@ const ListaUsuarios = () =>{
       <h1>Lista de Usuarios</h1>
       <Button  type='button' variant="contained" color='success' onClick={() => window.location.reload()} sx={{width:150}}>Atualizar</Button>
         <ul className={style.lista}>
-          {usuarios.length > 0 ? usuarios.map((usuario) => <Usuario key={usuario.id} usuario={usuario}/>) : <p>Lista Vazia</p>}   
+          {usuarios.length > 0 ? usuarios.map((usuario) => <Usuario key={usuario.id} usuario={usuario}/>) : null}   
         </ul>
     </div>
   );
