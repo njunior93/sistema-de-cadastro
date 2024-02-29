@@ -1,7 +1,7 @@
 import { Button, FormControlLabel, FormLabel, Grid, MenuItem, Radio, RadioGroup } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import ClearIcon from '@mui/icons-material/Clear';
-import { useUsuarioStore } from '../../store/store';
+import { useAtualizarPagina } from '../../store/store';
 import { v4 as uuidv4 } from 'uuid';
 import TextField from '@mui/material/TextField';
 import style from './Formulario.module.scss';
@@ -9,6 +9,10 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const Formulario = () =>{
+
+  const {paginaatualizada, atualizar, naoatualizar} = useAtualizarPagina();
+  let submit = false;
+
   const esquema = yup.object({
     nome: yup
       .string()
@@ -28,14 +32,13 @@ const Formulario = () =>{
       .required('sexo é obrigatorio'),
   });
 
-
   return (
     <>
       <Formik initialValues={{nome: '', email:'',data:'',sexo:''}}
-      onSubmit={(valores) => 
+      onSubmit={(valores, {setValues}) => 
         { 
           const cadastro = {id: uuidv4(), nome: valores.nome, email: valores.email, data: valores.data, sexo: valores.sexo}
-          fetch('https://api-orpin-psi-22.vercel.app/cadastrar',
+          fetch('http://localhost:3333/cadastrar',
           {
             method: 'POST',
             headers: {
@@ -49,10 +52,10 @@ const Formulario = () =>{
           .catch(erro => {
             console.error('Erro ao cadastrar usuario: ', erro)
           });
-  
-          window.alert('Cadastro realizado com sucesso')
-          window.location.reload();    
-  
+          
+          setValues({nome: '', email:'',data:'',sexo:''});
+          submit = true;
+          window.alert('Cadastro realizado com sucesso');
         }
       
       } validationSchema={esquema}>
@@ -61,13 +64,13 @@ const Formulario = () =>{
             <h1>Cadastro de Usuarios</h1>
             <fieldset className={style.campos}>
               <div className={style.botoes}>
-                <Button  type='submit' variant="contained" color='success' startIcon={<SaveIcon/>} sx={{width:150}}>Cadastrar</Button>
+                <Button  type='submit' onClick={atualizar} variant="contained" color='success' startIcon={<SaveIcon/>} sx={{width:150}}>Cadastrar</Button>
                 <Button type='reset' variant="contained" color='warning' startIcon={<ClearIcon/>} sx={{width:150}}>Cancelar</Button>
               </div>
-              <TextField fullWidth variant="standard" margin='normal' required label='Nome completo' name='nome' onChange={props.handleChange} onBlur={props.handleBlur}/>
-              {props.errors.nome && props.touched.nome ? (<div className={style.erro}>{props.errors.nome}</div>) : null}
-              <TextField fullWidth variant="standard" margin='normal' required label="Email" name='email' onChange={props.handleChange} onBlur={props.handleBlur}/>
-              {props.errors.email && props.touched.email ? (<div className={style.erro}>{props.errors.email}</div>) : null}
+              <TextField fullWidth value={props.values.nome} variant="standard" margin='normal' required label='Nome completo' name='nome' onChange={props.handleChange} onBlur={props.handleBlur}/>
+              {props.errors.nome && props.touched.nome && submit === false ? (<div className={style.erro}>{props.errors.nome}</div>) : null}
+              <TextField fullWidth value={props.values.email} variant="standard" margin='normal' required label="Email" name='email' onChange={props.handleChange} onBlur={props.handleBlur}/>
+              {props.errors.email && props.touched.email && submit === false ? (<div className={style.erro}>{props.errors.email}</div>) : null}
               <div className={style.genero_data}>
                 <FormLabel  id="opcoes-genero">Gênero</FormLabel>
                 <RadioGroup
@@ -80,8 +83,8 @@ const Formulario = () =>{
                     <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
                     <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
                 </RadioGroup>
-                <TextField  type='date' fullWidth required label="Data de Nascimento" className={style.campo} InputLabelProps={{ shrink: true}} name='data' onChange={props.handleChange} onBlur={props.handleBlur}/>
-                {props.errors.data && props.touched.data ? (<div className={style.erro}>{props.errors.data}</div>) : null}
+                <TextField value={props.values.data} type='date' fullWidth required label="Data de Nascimento" className={style.campo} InputLabelProps={{ shrink: true}} name='data' onChange={props.handleChange} onBlur={props.handleBlur}/>
+                {props.errors.data && props.touched.data && submit === false? (<div className={style.erro}>{props.errors.data}</div>) : null}
               </div>
               
             </fieldset>
