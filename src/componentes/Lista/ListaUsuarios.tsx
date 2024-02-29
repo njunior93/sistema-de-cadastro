@@ -8,13 +8,13 @@ import { IUsuario } from '../../type/IUsuario';
 import { WindowSharp } from '@mui/icons-material';
 
 const ListaUsuarios = () =>{ 
-  const URLAPI = process.env.URLAPI
+  const LISTA = process.env.APILISTA
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
 
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch(`${URLAPI}lista`)
+    fetch(`${LISTA}`)
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
