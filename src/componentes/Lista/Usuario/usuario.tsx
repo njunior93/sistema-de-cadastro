@@ -18,7 +18,7 @@ const Usuario = ({usuario}:Props) =>{
 
     if(window.confirm(`Deseja excluir o usuario${usuario.nome}`)){
 
-      fetch(`${LISTA}${usuario.id}`,{
+      fetch(`https://api-orpin-psi-22.vercel.app/lista/${usuario.id}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
