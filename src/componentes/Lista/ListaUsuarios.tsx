@@ -8,7 +8,7 @@ import { IUsuario } from '../../type/IUsuario';
 import { WindowSharp } from '@mui/icons-material';
 
 const ListaUsuarios = () =>{ 
-  const LISTA = process.env.APILISTA
+  const LISTA = process.env.APILISTA;
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
 
   window.onload = atualizarLista;
