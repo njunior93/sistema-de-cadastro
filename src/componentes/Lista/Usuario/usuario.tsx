@@ -16,7 +16,7 @@ const Usuario = ({usuario}:Props) =>{
 
     if(window.confirm(`Deseja excluir o usuario ${usuario.nome}`)){
 
-      fetch(`http://localhost:3333/lista/${usuario.id}/${usuario.nome}`,{
+      fetch(`http://localhost:3333/lista/${usuario.id}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
