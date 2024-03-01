@@ -53,9 +53,9 @@ const Formulario = () =>{
             console.error('Erro ao cadastrar usuario: ', erro)
           });
           
-          setValues({nome: '', email:'',data:'',sexo:''});
           submit = true;
           window.alert('Cadastro realizado com sucesso');
+          setValues({nome: '', email:'',data:'',sexo:'Feminino'});
         }
       
       } validationSchema={esquema}>
@@ -64,7 +64,7 @@ const Formulario = () =>{
             <h1>Cadastro de Usuarios</h1>
             <fieldset className={style.campos}>
               <div className={style.botoes}>
-                <Button  type='submit' onClick={atualizar} variant="contained" color='success' startIcon={<SaveIcon/>} sx={{width:150}}>Cadastrar</Button>
+                <Button type='submit' onClick={atualizar} variant="contained" color='success' startIcon={<SaveIcon/>} sx={{width:150}}>Cadastrar</Button>
                 <Button type='reset' variant="contained" color='warning' startIcon={<ClearIcon/>} sx={{width:150}}>Cancelar</Button>
               </div>
               <TextField fullWidth value={props.values.nome} variant="standard" margin='normal' required label='Nome completo' name='nome' onChange={props.handleChange} onBlur={props.handleBlur}/>
