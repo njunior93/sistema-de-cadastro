@@ -53,8 +53,8 @@ const Formulario = () =>{
             console.error('Erro ao cadastrar usuario: ', erro)
           });
           
-          submit = true;
           window.alert('Cadastro realizado com sucesso');
+          submit = true;
           setValues({nome: '', email:'',data:'',sexo:'Feminino'});
         }
       
