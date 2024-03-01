@@ -11,7 +11,7 @@ const ListaUsuarios = () =>{
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch('https://api-teste-yg5e.onrender.com/lista')
+    fetch('https://api-teste-yg5e.onrender.com.br/lista')
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
