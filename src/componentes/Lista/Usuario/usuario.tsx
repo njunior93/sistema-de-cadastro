@@ -14,7 +14,7 @@ const Usuario = ({usuario}:Props) =>{
 
   function excluiUsuario(usuario: IUsuario){
 
-    if(window.confirm(`Deseja excluir o usuario ${usuario.nome}`)){
+    if(window.confirm(`Deseja excluir o usuario ${usuario.id}`)){
 
       fetch(`https://api-teste-yg5e.onrender.com/lista/${usuario.id}`,{
         method: 'DELETE',
