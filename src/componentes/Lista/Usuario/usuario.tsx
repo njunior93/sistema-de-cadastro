@@ -14,7 +14,7 @@ const Usuario = ({usuario}:Props) =>{
 
   function excluiUsuario(usuario: IUsuario){
 
-    if(window.confirm(`Deseja excluir o usuario ${usuario.id}`)){
+    if(window.confirm(`Deseja excluir o usuario ${usuario.nome}`)){
 
       fetch(`https://api-teste-yg5e.onrender.com/lista/${usuario.id}`,{
         method: 'DELETE',
@@ -29,8 +29,6 @@ const Usuario = ({usuario}:Props) =>{
           return resposta.json();
         }
 
-         window.location.reload();
-
       }) 
       .then(dados => {
         console.log('A solicitação foi concluida')
@@ -39,6 +37,7 @@ const Usuario = ({usuario}:Props) =>{
         console.error('Erro ao processar solicitação: ',error);
       }) 
 
+      window.location.reload();
      
     } 
       
