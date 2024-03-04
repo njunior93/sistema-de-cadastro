@@ -16,7 +16,7 @@ const Usuario = ({usuario}:Props) =>{
 
     if(window.confirm(`Deseja excluir o usuario ${usuario.id}`)){
 
-      fetch(`https://api-teste-yg5e.onrender.com/lista/${usuario.id}`,{
+      fetch(`https://api-teste-yg5e.onrender.com/lista/${usuario.nome}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
@@ -28,6 +28,8 @@ const Usuario = ({usuario}:Props) =>{
         }else{
           return resposta.json();
         }
+
+         window.location.reload();
 
       }) 
       .then(dados => {
