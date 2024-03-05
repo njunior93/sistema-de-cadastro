@@ -39,7 +39,7 @@ const Usuario = ({usuario}:Props) =>{
         console.error('Erro ao processar solicitação: ',error);
       }) 
 
-     // window.location.reload();
+     window.location.reload();
      
     } 
       
