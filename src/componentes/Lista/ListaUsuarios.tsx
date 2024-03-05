@@ -7,11 +7,12 @@ import { useEffect } from 'react';
 const ListaUsuarios = () =>{ 
   const {paginaatualizada, atualizar, naoatualizar} = useAtualizarPagina();
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
+  const lista = process.env.LISTA;
 
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch('https://api-njunior93.vercel.app/lista')
+    fetch(lista)
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
