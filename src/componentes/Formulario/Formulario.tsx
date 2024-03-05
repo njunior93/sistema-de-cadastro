@@ -67,9 +67,9 @@ const Formulario = () =>{
                 <Button type='submit' onClick={atualizar} variant="contained" color='success' startIcon={<SaveIcon/>} sx={{width:150}}>Cadastrar</Button>
                 <Button type='reset' variant="contained" color='warning' startIcon={<ClearIcon/>} sx={{width:150}}>Cancelar</Button>
               </div>
-              <TextField fullWidth value={props.values.nome} variant="standard" margin='normal' required label='Nome completo' name='nome' onChange={props.handleChange} onBlur={props.handleBlur}/>
+              <TextField fullWidth value={props.values.nome} variant="standard" margin='normal' required label='Nome completo' name='nome' onChange={props.handleChange}/>
               {props.errors.nome && props.touched.nome && submit === false ? (<div className={style.erro}>{props.errors.nome}</div>) : null}
-              <TextField fullWidth value={props.values.email} variant="standard" margin='normal' required label="Email" name='email' onChange={props.handleChange} onBlur={props.handleBlur}/>
+              <TextField fullWidth value={props.values.email} variant="standard" margin='normal' required label="Email" name='email' onChange={props.handleChange}/>
               {props.errors.email && props.touched.email && submit === false ? (<div className={style.erro}>{props.errors.email}</div>) : null}
               <div className={style.genero_data}>
                 <FormLabel  id="opcoes-genero">Gênero</FormLabel>
@@ -83,7 +83,7 @@ const Formulario = () =>{
                     <FormControlLabel value="Feminino" control={<Radio />} label="Feminino" />
                     <FormControlLabel value="Masculino" control={<Radio />} label="Masculino" />
                 </RadioGroup>
-                <TextField value={props.values.data} type='date' fullWidth required label="Data de Nascimento" className={style.campo} InputLabelProps={{ shrink: true}} name='data' onChange={props.handleChange} onBlur={props.handleBlur}/>
+                <TextField value={props.values.data} type='date' fullWidth required label="Data de Nascimento" className={style.campo} InputLabelProps={{ shrink: true}} name='data' onChange={props.handleChange}/>
                 {props.errors.data && props.touched.data && submit === false? (<div className={style.erro}>{props.errors.data}</div>) : null}
               </div>
               
