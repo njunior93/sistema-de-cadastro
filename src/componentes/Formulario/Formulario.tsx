@@ -11,6 +11,7 @@ import * as yup from 'yup';
 const Formulario = () =>{
 
   const {paginaatualizada, atualizar, naoatualizar} = useAtualizarPagina();
+  const cadastrar = process.env.CADASTRAR;
   let submit = false;
 
   const esquema = yup.object({
@@ -38,7 +39,7 @@ const Formulario = () =>{
       onSubmit={(valores, {setValues}) => 
         { 
           const cadastro = {id: uuidv4(), nome: valores.nome, email: valores.email, data: valores.data, sexo: valores.sexo}
-          fetch('https://api-njunior93.vercel.app/cadastrar',
+          fetch(`${cadastrar}`,
           {
             method: 'POST',
             headers: {
