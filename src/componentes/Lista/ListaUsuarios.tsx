@@ -20,14 +20,14 @@ const ListaUsuarios = () =>{
         });
       });
   }
-/*
+
   useEffect(() =>{
 
     if(paginaatualizada === true){
       window.location.reload();
     }
     
-  },[])*/
+  },[]);
 
   return (
     <div className={style.containerLista}>
