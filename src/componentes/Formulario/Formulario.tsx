@@ -35,7 +35,7 @@ const Formulario = () =>{
 
   return (
     <>
-      <Formik initialValues={{nome: '', email:'',data:'',sexo:''}}
+      <Formik initialValues={{nome: '', email:'',data:'',sexo:'Feminino'}}
       onSubmit={(valores, {setValues}) => 
         { 
           const cadastro = {id: uuidv4(), nome: valores.nome, email: valores.email, data: valores.data, sexo: valores.sexo}
