@@ -12,7 +12,7 @@ const ListaUsuarios = () =>{
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch('https://api-njunior93.vercel.app/lista')
+    fetch('$lista')
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
