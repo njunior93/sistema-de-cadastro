@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 const ListaUsuarios = () =>{ 
   const {paginaatualizada, atualizar, naoatualizar} = useAtualizarPagina();
   const [usuarios, setUsuarios] = useUsuarioStore(state =>[ state.usuarios, state.addToUsuario])
-  const lista = process.env.LISTA;
 
   window.onload = atualizarLista;
   
