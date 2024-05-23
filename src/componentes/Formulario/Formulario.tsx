@@ -39,7 +39,7 @@ const Formulario = () =>{
       onSubmit={(valores, {setValues}) => 
         { 
           const cadastro = {id: uuidv4(), nome: valores.nome, email: valores.email, data: valores.data, sexo: valores.sexo}
-          fetch('https://api-njunior93.vercel.app/cadastrar',
+          fetch('$cadastrar',
           {
             method: 'POST',
             headers: {
