@@ -12,7 +12,7 @@ const ListaUsuarios = () =>{
   window.onload = atualizarLista;
   
   function atualizarLista(){
-    fetch('$lista')
+    fetch('https://api-ebon-mu-47.vercel.app/lista')
         .then(resposta => resposta.json())
         .then(dados => {
           dados.forEach((usuario: any) => {
