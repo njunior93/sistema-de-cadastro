@@ -18,7 +18,7 @@ const Usuario = ({usuario}:Props) =>{
 
     if(window.confirm(`Deseja excluir o usuario ${usuario.nome}`)){
 
-      fetch(`https://api-njunior93.vercel.app/lista/${usuario.id}`,{
+      fetch(`https://api-ebon-mu-47.vercel.app/lista/${usuario.id}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json',},
       })
