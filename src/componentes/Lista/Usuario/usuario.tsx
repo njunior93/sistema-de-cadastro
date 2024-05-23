@@ -12,8 +12,6 @@ interface Props{
 
 const Usuario = ({usuario}:Props) =>{
 
-  const lista = process.env.LISTA;
-
   function excluiUsuario(usuario: IUsuario){
 
     if(window.confirm(`Deseja excluir o usuario ${usuario.nome}`)){
